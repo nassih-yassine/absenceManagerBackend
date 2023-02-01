@@ -1,0 +1,28 @@
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: r1
+#          uri: lb://CLIENT-SERVICE
+#          predicates:
+#            - Path= /clients/**
+#
+#        - id: r2
+#          uri: lb://STAFF-SERVICE
+#          predicates:
+#            - Path= /staffs/**
+#
+#        - id: r3
+#          uri: lb://PROFESSOR-SERVICE
+#          predicates:
+#            - Path= /professors/**
+#
+#        - id: r4
+#          uri: lb://COURSE-SERVICE
+#          predicates:
+#            - Path= /courses/**
+#
+#        - id: r5
+#          uri: lb://ABSENCE-SERVICE
+#          predicates:
+#            - Path= /absences/**
