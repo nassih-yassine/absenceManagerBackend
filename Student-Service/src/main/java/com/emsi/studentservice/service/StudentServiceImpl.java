@@ -10,10 +10,6 @@ import com.emsi.studentservice.mappers.StudentMapper;
 import com.emsi.studentservice.repos.StudentRepo;
 import com.emsi.studentservice.utils.StudentUtils;
 import lombok.AllArgsConstructor;
-//import org.keycloak.admin.client.Keycloak;
-//import org.keycloak.admin.client.KeycloakBuilder;
-//import org.keycloak.representations.idm.CredentialRepresentation;
-//import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
