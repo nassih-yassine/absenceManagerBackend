@@ -8,27 +8,19 @@ import com.emsi.studentservice.exceptions.StudentNICExistException;
 import com.emsi.studentservice.exceptions.StudentNotFoundException;
 import com.emsi.studentservice.mappers.StudentMapper;
 import com.emsi.studentservice.repos.StudentRepo;
+import com.emsi.studentservice.utils.KeycloakUtils;
 import com.emsi.studentservice.utils.StudentUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+
+import java.util.*;
 
 @Service
 @Transactional
 @AllArgsConstructor
 public class StudentServiceImpl implements StudentService {
-//    private Keycloak getAdminKeycloakUser() {
-//        return KeycloakBuilder.builder()
-//                .serverUrl("http://localhost:8100/auth")
-//                .grantType("password")
-//                .realm("absence-manager")
-//                .clientId("student-service")
-//                .username("nassih")
-//                .password("Nassih9@9yassine")
-//                .build();
-//    }
     private StudentRepo studentRepo;
     private StudentMapper studentMapper;
 
@@ -41,27 +33,9 @@ public class StudentServiceImpl implements StudentService {
         if(studentCheckNIC != null)
             throw new StudentNICExistException(studentInputDto.getNic());
 
-          Student student = StudentUtils.setStudentAttribute(studentInputDto, null);
-//        UserRepresentation userRepresentation = new UserRepresentation();
-//        userRepresentation.setRealmRoles(List.of("STUDENT"));
-//        userRepresentation.setLastName(student.getLastName());
-//        userRepresentation.setFirstName(student.getFirstName());
-//        userRepresentation.setUsername(student.getEmail());
-//        userRepresentation.setEnabled(true);
-//        userRepresentation.setEmail(student.getEmail());
-//
-//        CredentialRepresentation credentialRepresentation = new CredentialRepresentation();
-//        credentialRepresentation.setTemporary(false);
-//        credentialRepresentation.setType("password");
-//        credentialRepresentation.setValue("Admin123");
-//
-//        userRepresentation.setCredentials(List.of(credentialRepresentation));
-//
-//        getAdminKeycloakUser()
-//                .realm("absence-manager")
-//                .users()
-//                .create(userRepresentation);
+        Student student = StudentUtils.setStudentAttribute(studentInputDto, null);
 
+        KeycloakUtils.createKeycloakUserWithRole(student, "Admin123");
         return studentMapper.fromStudent(studentRepo.save(student));
     }
 
