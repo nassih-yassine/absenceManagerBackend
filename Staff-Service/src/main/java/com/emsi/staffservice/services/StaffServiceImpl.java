@@ -8,6 +8,7 @@ import com.emsi.staffservice.exceptions.StaffIdNotFoundException;
 import com.emsi.staffservice.exceptions.StaffNICExistException;
 import com.emsi.staffservice.mappers.MapperService;
 import com.emsi.staffservice.repositories.StaffRepository;
+import com.emsi.staffservice.utils.KeycloakUtils;
 import com.emsi.staffservice.utils.StaffUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,8 @@ public class StaffServiceImpl implements StaffService {
             throw new StaffNICExistException(staffInputDto.getNic());
 
         Staff staff = StaffUtils.setStaffAttribute(staffInputDto, null);
+
+        KeycloakUtils.createKeycloakUserWithRole(staff, "Admin123");
         return mapper.fromStaff(repository.save(staff));
     }
 
