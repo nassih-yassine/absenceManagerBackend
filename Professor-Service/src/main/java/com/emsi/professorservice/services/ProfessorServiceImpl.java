@@ -9,6 +9,7 @@ import com.emsi.professorservice.exceptions.ProfessorIdNotFoundException;
 import com.emsi.professorservice.exceptions.ProfessorNICExistException;
 import com.emsi.professorservice.mappers.MapperService;
 import com.emsi.professorservice.repositories.ProfessorRepository;
+import com.emsi.professorservice.utils.KeycloakUtils;
 import com.emsi.professorservice.utils.ProfessorUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,8 @@ public class ProfessorServiceImpl implements ProfessorService {
             throw new ProfessorNICExistException(professorInputDto.getNic());
 
         Professor professor = ProfessorUtils.setProfessorAttribute(professorInputDto, null);
+
+        KeycloakUtils.createKeycloakUserWithRole(professor, "Admin123");
         return mapper.fromProfessor(repository.save(professor));
     }
 
