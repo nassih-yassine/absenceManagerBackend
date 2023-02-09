@@ -196,9 +196,9 @@ Vers la fin de la création
     
     ou bien on utilise l'interface d'**Intelij** pour le créer.
     
-    <img title="" src="file:///home/nassih/Desktop/s5/jee/AbsenceManager/rapport_images/Discovery-Service/maven-clean.png" alt="">
+    <img title="" src="./rapport_images/Discovery-Service/maven-clean.png" alt="">
     
-    <img title="" src="file:///home/nassih/Desktop/s5/jee/AbsenceManager/rapport_images/Discovery-Service/maven-install.png" alt="">
+    <img title="" src="./rapport_images/Discovery-Service/maven-install.png" alt="">
     
     Une fois le 2 commandes sont bien éxecuter. Un fichier nommé *Eureka-Discovery-Service-0.0.1-SNAPSHOT.jar* sera créer dans le docssier **target**.
     
@@ -223,7 +223,7 @@ Vers la fin de la création
     
     le flag '**-t**' est pour donner un nom a notre image, '**0.1**' est une version, si on donne pas une version, la version par defaut sera *latest*. puis '**.**' est pour indicer l'emplacement du fichier '**Dockerfile**'.
     
-    <img title="" src="file:///home/nassih/Desktop/s5/jee/AbsenceManager/rapport_images/Discovery-Service/eureka-dockerfile.png" alt="">
+    <img title="" src="./rapport_images/Discovery-Service/eureka-dockerfile.png" alt="">
     
     Une fois terminer, on execute la commande suivante pour verfier si notre image a ete bien créer.
     
@@ -231,7 +231,7 @@ Vers la fin de la création
     docker image ls
     ```
     
-    <img title="" src="file:///home/nassih/Desktop/s5/jee/AbsenceManager/rapport_images/Discovery-Service/docker-image-creating-list.png" alt="">
+    <img title="" src="./rapport_images/Discovery-Service/docker-image-creating-list.png" alt="">
     
     
   
@@ -248,11 +248,11 @@ Vers la fin de la création
     
     le flag '**-d**' pour lancer ce contanaire on arriere plan, '**-p**' est pour indiquer les ports dans le premier port signifier le port sur le quel le contenaire va ecouter sur la machine local, puis le 2ème port indique le port interne du contenaire sur le quel l'application est lancer.
     
-    <img title="" src="file:///home/nassih/Desktop/s5/jee/AbsenceManager/rapport_images/Discovery-Service/run-test-docker-commande.png" alt="">
+    <img title="" src="./rapport_images/Discovery-Service/run-test-docker-commande.png" alt="">
     
     Notre contenaire maintenant est démmarer pour verifier, on ouvre notre *web brouser* est on accede au "**localhost:8761**", on obtien le résultat suivant:
     
-    <img title="" src="file:///home/nassih/Desktop/s5/jee/AbsenceManager/rapport_images/Discovery-Service/run-test-docker-web.png" alt="">
+    <img title="" src="./rapport_images/Discovery-Service/run-test-docker-web.png" alt="">
     
     
     
