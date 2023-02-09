@@ -15,8 +15,8 @@
   - [Architecture global du projet](#architecture-global-du-projet  "Architecture global du projet")
 
 - [**Backend**](#backend "Backend")
-
-- **Frontend**
+  
+  
 
 ____
 
@@ -206,7 +206,53 @@ Vers la fin de la création
   
   * *Creation du fichier Dockerfile*
     
-    On créer un fichier '**Dockerfile**', sans extension, dans le *root* de notre module, puis on spécifier les etapes pour créer notre ***Contenaire Docker pour Eureka Discovery Service***.
+    On créer un fichier '**Dockerfile**', sans extension, dans le *root* de notre module, puis on spécifier les etapes pour créer notre ***Contenaire Docker pour Eureka Discovery Service***. 
+    
+    ```docker
+    FROM eclipse-temurin:17-jdk-alpine
+    ARG JAR_FILE=target/*.jar
+    COPY ./target/Eureka-Discovery-Service-0.0.1-SNAPSHOT.jar app.jar
+    ENTRYPOINT ["java", "-jar", "/app.jar"]
+    ```
+    
+    puis en execute la commande suivante pour créer notre propre image.
+    
+    ```shell
+    docker build -t absence/eureka-server:0.1 .
+    ```
+    
+    le flag '**-t**' est pour donner un nom a notre image, '**0.1**' est une version, si on donne pas une version, la version par defaut sera *latest*. puis '**.**' est pour indicer l'emplacement du fichier '**Dockerfile**'.
+    
+    <img title="" src="file:///home/nassih/Desktop/s5/jee/AbsenceManager/rapport_images/Discovery-Service/eureka-dockerfile.png" alt="">
+    
+    Une fois terminer, on execute la commande suivante pour verfier si notre image a ete bien créer.
+    
+    ```shell
+    docker image ls
+    ```
+    
+    <img title="" src="file:///home/nassih/Desktop/s5/jee/AbsenceManager/rapport_images/Discovery-Service/docker-image-creating-list.png" alt="">
+    
+    
+  
+  * *Tester l'image créer*
+    
+    Pour tester notre image, il faut qu'on lance un contenaire depuis cette image.
+    
+    pour cella on execute la commande suivante:
+    
+    ```shell
+    docker run -d -p 8761:8761 absence/eureka-server:0.1
+    ```
+    
+    
+    le flag '**-d**' pour lancer ce contanaire on arriere plan, '**-p**' est pour indiquer les ports dans le premier port signifier le port sur le quel le contenaire va ecouter sur la machine local, puis le 2ème port indique le port interne du contenaire sur le quel l'application est lancer.
+    
+    <img title="" src="file:///home/nassih/Desktop/s5/jee/AbsenceManager/rapport_images/Discovery-Service/run-test-docker-commande.png" alt="">
+    
+    Notre contenaire maintenant est démmarer pour verifier, on ouvre notre *web brouser* est on accede au "**localhost:8761**", on obtien le résultat suivant:
+    
+    <img title="" src="file:///home/nassih/Desktop/s5/jee/AbsenceManager/rapport_images/Discovery-Service/run-test-docker-web.png" alt="">
     
     
     
@@ -216,5 +262,15 @@ Vers la fin de la création
     
     
     
+    
+    
+    
+    
+
+
+
+
+
+
 
 
