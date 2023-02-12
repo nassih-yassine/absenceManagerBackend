@@ -2,6 +2,13 @@
 
 #### *Application basée sur une architecture micro-service qui permet de gérer les absences dans une école.*
 
+
+##### Réaliser par: 
+* NASSIH YASSINE
+* AQARQAOU YOUSSEF
+* NOUADER ANAS
+* ERRAJI OUSSAMA
+* JERRAR MANAL
 ---
 
 ##### Table des matières
